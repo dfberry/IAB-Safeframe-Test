@@ -1,23 +1,25 @@
-
+#  Safe-frame test for host
+#
+#
 #  $ docker build -t sf-host .
-#  $ docker run -it -p 8010:8010 -v /Users/dfberry/repos/IAB/:/home/nodejs/safeframe sf-host 
+#  $ docker run -it -p 8010:8010 -v /Users/dfberry/repos/IAB/IAB-Safeframe-Test:/home/nodejs/container-IAB-Safeframe-Test sf-host 
 
+# Git hub: https://github.com/dfberry/IAB-Safeframe-Test
 
-#tail -f /dev/null 
 # base image 
 FROM node:latest
 
-RUN mkdir -p /home/nodejs/safeframe && \
+RUN mkdir -p /home/nodejs/ && \
     groupadd -r nodejs && \
     useradd -r -g nodejs -d /home/nodejs nodejs && \
     chown -R nodejs:nodejs /home/nodejs
 
-RUN apt-get update
-RUN apt-get install nano
 RUN npm install -g lite-server
+RUN git clone https://github.com/dfberry/IAB-Safeframe-Test container-IAB-Safeframe-Test
 
-WORKDIR /home/nodejs/safeframe/
+WORKDIR /home/nodejs/container-IAB-Safeframe-Test/IAB-sf-host
 
 USER nodejs
 
-CMD lite-server -c ./liteserver.config.js
+#using bs-config.js to set port to 8010 and server from /ads
+CMD lite-server 

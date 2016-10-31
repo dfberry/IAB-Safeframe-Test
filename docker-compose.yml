@@ -1,0 +1,24 @@
+# Run docker-compose build
+# Run docker-compose up
+# Live long and prosper
+
+version: '2'
+
+services:
+
+  sf-host:
+    container_name: sf-host
+    image: sf-host
+    build:
+      context: .
+      dockerfile: ./IAB-sf-host/Dockerfile
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "8010:8010"
+    networks:
+      - safeframe-test
+      
+networks:
+  safeframe-test:
+    driver: bridge
