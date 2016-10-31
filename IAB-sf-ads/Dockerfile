@@ -14,6 +14,9 @@ RUN mkdir -p /home/nodejs/ && \
     useradd -r -g nodejs -d /home/nodejs nodejs && \
     chown -R nodejs:nodejs /home/nodejs
 
+RUN apt-get update
+RUN apt-get install nano
+
 RUN npm install -g lite-server
 
 WORKDIR /home/nodejs/
@@ -24,4 +27,4 @@ WORKDIR /home/nodejs/container-IAB-Safeframe-Test/IAB-sf-ads
 USER nodejs
 
 #using bs-config.js to set port to 8010 and server from /ads
-CMD lite-server 
+#CMD lite-server 
