@@ -2,7 +2,7 @@
 #
 #
 #  $ docker build -t sf-host .
-#  $ docker run -it -p 8010:8010 -v /Users/dfberry/repos/IAB/IAB-Safeframe-Test:/home/nodejs/container-IAB-Safeframe-Test sf-host
+#  $ docker run -it -p 8010:8010 -p 8020:8020 -v /Users/dfberry/repos/IAB/IAB-Safeframe-Test:/home/nodejs/container-IAB-Safeframe-Test sf-host
 
 # Git hub: https://github.com/dfberry/IAB-Safeframe-Test
 # tail -f /dev/null
@@ -22,7 +22,9 @@ RUN npm install -g lite-server
 WORKDIR /home/nodejs/
 RUN git clone https://github.com/dfberry/IAB-Safeframe-Test.git container-IAB-Safeframe-Test
 
-WORKDIR /home/nodejs/container-IAB-Safeframe-Test/IAB-sf-host
+WORKDIR /home/nodejs/container-IAB-Safeframe-Test/
+#RUN npm install 
+#RUN npm start
 
 USER nodejs
 
