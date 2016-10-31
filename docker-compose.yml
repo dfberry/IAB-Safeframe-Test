@@ -16,6 +16,21 @@ services:
       - NODE_ENV=development
     ports:
       - "8010:8010"
+      - "8011:8011"
+    networks:
+      - safeframe-test
+
+  sf-ads:
+    container_name: sf-ads
+    image: sf-ads
+    build:
+      context: .
+      dockerfile: ./IAB-sf-ads/Dockerfile
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "8020:8020"
+      - "8021:8021"
     networks:
       - safeframe-test
       
