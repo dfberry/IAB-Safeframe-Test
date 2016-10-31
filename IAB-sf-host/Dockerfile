@@ -15,7 +15,9 @@ RUN mkdir -p /home/nodejs/ && \
     chown -R nodejs:nodejs /home/nodejs
 
 RUN npm install -g lite-server
-RUN git clone https://github.com/dfberry/IAB-Safeframe-Test container-IAB-Safeframe-Test
+
+WORKDIR /home/nodejs/
+RUN git clone https://github.com/dfberry/IAB-Safeframe-Test.git container-IAB-Safeframe-Test
 
 WORKDIR /home/nodejs/container-IAB-Safeframe-Test/IAB-sf-host
 
