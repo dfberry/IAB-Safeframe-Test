@@ -7,3 +7,7 @@
 
 safe-frame needs the system to start no in the website or ads dir but 1 dir up so make sure
 to request into ads or website to get correct files
+
+
+http://localhost:8010/website/pushdown_sample.html
+http://localhost:8020/ads/index.html
