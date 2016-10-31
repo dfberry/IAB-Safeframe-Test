@@ -8,14 +8,17 @@ var hostSupports = {};
  function writeLog(message){
   var el = document.getElementById("feedback");
   if(el) el.innerHTML += message + "<br />";
+  console.log("ad writelog message " + message);
  }
  
 function priorityLog(message) {
+	console.log("ad priorityLog message " + message);
 	var el = document.getElementById("feedback");
 	if(el) el.innerHTML = message;
 }
 
 function getPropsAsString(obj) {
+	console.log("ad getPropsAsString ");
 	var s = "";
 	for (var prop in obj) {
 	  if (typeof obj[prop] != 'function') {
@@ -26,6 +29,7 @@ function getPropsAsString(obj) {
 }
 	
 function examineObject(obj) {
+	console.log("ad examineObject ");
 	var funcs = [];
 	var fields = [];
 	for (var prop in obj) {
@@ -50,6 +54,7 @@ function examineObject(obj) {
  }*/
  function status_update(status, data)
  {
+	 console.log("ad status_update status " + status);
 	//writeLog(">" + status + examineObject(data));
 	if(status == "expanded") {
 		//priorityLog("Expanded!!");
@@ -92,6 +97,7 @@ function examineObject(obj) {
 */
 function setCookie(ad_state,newValue,exdays)
 {
+	console.log("ad setCookie ad_state " + ad_state + " newValue " + newValue + " exdays " + exdays);
 	// Prevent multiple setCookie calls
 	if(settingCookie || !hostSupports['write-cookie']) {
 		writeLog("Gave up setting cookie");
@@ -122,6 +128,7 @@ function setCookie(ad_state,newValue,exdays)
 */
 function getCookie(ad_state, handler)
 {
+	console.log("ad getCookie ad_state " + ad_state);
 	if(fetchingCookie || !hostSupports['read-cookie'])
 		return false;
 	
@@ -142,6 +149,7 @@ function getCookie(ad_state, handler)
  * Expand the ad by calling the SafeFrame API
  */
  function expandAd(){
+	 console.log("ad expandAd");
   var g, ex, obj;
 	if ($sf.ext) {
 		   try {
@@ -186,6 +194,7 @@ function getCookie(ad_state, handler)
  } 
 
  function collapseAd(){
+	 console.log("ad collapseAd");
   $sf.ext.collapse();
   window.setTimeout(function(){
 	  var expel = document.getElementById("collapsedAd");
@@ -201,6 +210,7 @@ function getCookie(ad_state, handler)
 
  function checkStoredState()
  {
+	 console.log("ad checkStoredState");
 	var b = getCookie("flashBrandAdState", (function(cookieValue) {
 		//writeLog("got: " + cookieValue);
 		adState = cookieValue;
@@ -214,10 +224,12 @@ function getCookie(ad_state, handler)
 		} else {
 			var expel = document.getElementById("collapsedAd");
 			if(expel){
+				console.log("ad expel");
 				expel.style.display = "block";
 			}
 			var adimg = document.getElementById("expandedAd");
 			if(adimg){
+				console.log("ad adimg");
 				adimg.style.display = "none";
 			}
 		}

@@ -2,8 +2,8 @@
 #
 #
 #  $ docker build -t sf-ads .
-#  $ docker run -it -p 8020:8020 -v /Users/dfberry/repos/IAB/IAB-Safeframe-Test:/home/nodejs/container-IAB-Safeframe-Test sf-ads 
-#  $ docker run --net=host -d -p 8020:8020 -v /Users/dfberry/repos/IAB/IAB-Safeframe-Test:/home/nodejs/container-IAB-Safeframe-Test --name ads sf-ads tail -f /dev/null
+#  $ docker run -h sfads -it -p 8020:8020 -v /Users/dfberry/repos/IAB/IAB-Safeframe-Test:/home/nodejs/container-IAB-Safeframe-Test sf-ads 
+#  $ docker run -h sfads -d -p 8020:8020 -v /Users/dfberry/repos/IAB/IAB-Safeframe-Test:/home/nodejs/container-IAB-Safeframe-Test --name ads sf-ads tail -f /dev/null
 
 
 # Git hub: https://github.com/dfberry/IAB-Safeframe-Test

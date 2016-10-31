@@ -2,7 +2,7 @@
 #
 #
 #  $ docker build -t sf-host .
-#  $ docker run -it -p 8010:8010 -v /Users/dfberry/repos/IAB/IAB-Safeframe-Test:/home/nodejs/container-IAB-Safeframe-Test sf-host
+#  $ docker run -h sfhost -it -p 8010:8010 -v /Users/dfberry/repos/IAB/IAB-Safeframe-Test:/home/nodejs/container-IAB-Safeframe-Test sf-host tail -f /dev/null
 
 # Git hub: https://github.com/dfberry/IAB-Safeframe-Test
 # tail -f /dev/null
