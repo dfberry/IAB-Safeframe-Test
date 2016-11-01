@@ -49,6 +49,7 @@ var NULL					= null,
     COLLAPSE_COMMAND 		= "collapse",
 	MESSAGE_COMMAND 		= "msg",
 	ERROR_COMMAND 			= "error",
+	BACKGROUND_COMMAND 		= "bg",
     NOTIFY_GEOM_UPDATE		= "geom-update",
 	NOTIFY_FOCUS_CHANGE		= "focus-change",
     NOTIFY_EXPAND			= "expand",
@@ -82,6 +83,7 @@ var NULL					= null,
 	_ue						= (win && win.unescape),
 	_cstr					= (lang && lang.cstr),
 	_cnum					= (lang && lang.cnum),
+	_cbool					= (lang && lang.cbool),
 	_append					= (dom && dom.append),
 	_tags					= (dom && dom.tags),
 	_elt					= (dom && dom.elt),
@@ -928,7 +930,7 @@ var NULL					= null,
 	function _render()
 	{
 		/* The internal method that does the document.write of ad content */
-
+		debugger;
 		var html, css;
 
 		css	 = _cstr(render_conf && render_conf.css);
@@ -1226,6 +1228,45 @@ var NULL					= null,
 		_set_alignment(0, 0);
 		return TRUE;
 	}
+	
+	/**
+	* Internal function to set the request for background takeover
+	*/
+	function _background(options)
+	{
+		var i, k;
+		var content, newObj;
+		var strkeys = ['color','href','imgsrc','tgt'];
+		var numkeys = ['t', 'b','l','r'];
+		var boolkeys = ['repeatX','repeatY','fixed'];
+		var objkeys = ['left_pane','right_pane'];
+		
+		newObj = {
+			color: _cstr(options.color),
+			href:  _cstr(options.href),
+			imgsrc:  _cstr(options.imgsrc),			
+		}
+		
+		for(i=0;i<boolkeys.length;i++){
+			k = boolkeys[i];
+			if(options[k] !== undefined){
+				newObj[k] = _cbool(options[k]);
+			}
+		}
+		
+		for(i=0;i<objkeys.length;i++){
+			k = objkeys[i];
+			if(typeof(options[k]) == 'object'){
+				newObj[k] = options[k];
+			}
+		}
+		
+		content = escape(ParamHash(newObj))
+		_send_msg(_cstr(["cmd=",BACKGROUND_COMMAND,"&pos=", pos_id, "&msg=", content]), BACKGROUND_COMMAND);	
+	}
+	
+	
+	/********************************* public methods below ************************************/
 
 	/**
 	 * Intialize the SafeFrame external vendor/client API, so that other features may be used
@@ -1404,6 +1445,25 @@ var NULL					= null,
 	function collapse()
 	{
 		if (_collapse()) _send_msg(_cstr(["cmd=",COLLAPSE_COMMAND,"&pos=", pos_id]), COLLAPSE_COMMAND);
+	}
+	
+	/**
+	 * Set the background and clickable hovering elements of parent page.
+	 *
+	 * @name $sf.ext.bg
+	 * @public
+	 * @static
+	 * @function
+	 * @param {object} [bgDes] Background description object
+	 *
+	*/
+	function bg(bgDes)
+	{
+		var does_bg = supports(BACKGROUND_COMMAND);
+
+		if (does_bg && typeof(bgDes) == 'object') {
+			_background(bgDes);
+		}		
 	}
 
 	/**
@@ -1614,7 +1674,8 @@ var NULL					= null,
 					cookie: 	cookie,
 					message: 	message,
 					inViewPercentage: inViewPercentage,
-					winHasFocus: winHasFocus
+					winHasFocus: winHasFocus,
+					bg: bg
 				}, sf, TRUE);
 
 				// QUESTION - IS this just leftover?

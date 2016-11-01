@@ -22,9 +22,9 @@ RUN apt-get install nano
 RUN npm install -g lite-server
 
 WORKDIR /home/nodejs/
-RUN git clone https://github.com/dfberry/IAB-Safeframe-Test.git container-IAB-Safeframe-Test
+RUN git clone https://github.com/dfberry/IAB-Safeframe-Test.git ads-IAB-Safeframe-Test
 
-WORKDIR /home/nodejs/container-IAB-Safeframe-Test/IAB-sf-ads
+WORKDIR /home/nodejs/ads-IAB-Safeframe-Test/IAB-sf-ads
 
 USER nodejs
 

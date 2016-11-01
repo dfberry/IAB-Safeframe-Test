@@ -1,0 +1,152 @@
+.padtop {
+			margin-top: 50px;
+		}
+		
+		.btnSmall {
+			font-size: 10px;
+			padding: 2px 5px;
+		}
+		
+		.marginTop20 {
+			margin-top: 20px;
+		}
+		
+		iframe {
+			background: transparent;
+		}
+		
+		h1 {
+			font-size: 1.4em;
+			text-shadow: 1px 1px 2px #bbb;
+			margin-bottom: 8px;
+		}
+		
+		h2 {
+			font-size: 1.3em;
+		}
+		
+		h3 {
+			font-size: 1.2em;
+		}
+		
+		label {
+			font-weight: bold;
+		}
+		
+		#tagMarkupSample {
+			min-height: 30px;
+			max-height: 350px;
+			overflow: auto;
+		}
+		
+		#htmlInput {
+			max-idth: 600px;
+			width: 90%;
+			height: 150px;
+			background: #ffe;
+		}
+		
+		input.size {
+			width: 50px;
+		}
+		
+		.sampleRow select {
+			vertical-align: baseline;
+		}
+		
+		.linearForm label {
+			display: inline-block;
+			margin-left: 20px;
+		}
+		
+		.linearForm label:first-child {
+			margin-left: 0px;
+			width: 63px;
+			text-align: right;
+		}
+		
+		.linearForm input {
+			vertical-align: baseline;
+		}
+		
+		.actionButtons button {
+			margin-right: 20px;
+		}
+		
+		.wideModal {
+			min-width: 600px;
+			width: 75%;
+			left: 10%;
+			margin-left: 0;
+		}
+		
+		.hidden {
+			display: none;
+		}
+		
+		.visibleInBlock {
+			display: inline-block;
+		}
+		
+		.visibleBlock {
+			display: block;
+		}
+		
+		.adSamplePage {
+			background: #eee;
+			border: 1px solid #555;
+			padding-bottom: 60px;
+		}
+		
+		.adSamplePage .pageContent {
+			width: 928px;
+			margin: auto;
+			min-height: 620px;
+			background: white;
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+		
+		#adcontrols {
+			transition: height 1s ease-in-out;
+		}
+		
+		.collapsed {
+			height: 0px;
+			overflow: hidden;
+		}
+		
+		.expanded {
+			height: 365px;
+		}
+		
+		#topAdWrapper div,
+		#topAdWrapper div iframe {
+			transition: width 0.4s ease-in-out, height 0.4s;
+		}
+		/* ============================== AD PLACEMENT FORMATS ===================================== */
+		
+		.leaderboard {
+			display: block;
+			margin: auto;
+			overflow: show;
+			margin-bottom: 15px;
+		}
+		
+		.skyscraper {
+			float: left;
+			width: 120px;
+			height: 600px;
+			margin-right: 15px;
+		}
+		
+		.sidekick250 {
+			float: right;
+			margin: 10px;
+		}
+		
+		.sidekick250expando {
+			float: left;
+			top: 60px;
+			margin-right: 10px;
+		}
