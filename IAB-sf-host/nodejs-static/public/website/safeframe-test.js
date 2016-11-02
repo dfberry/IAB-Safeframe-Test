@@ -1,3 +1,9 @@
+function getAdServerAddress(){
+    var adServerAddress="http://172.21.0.3:8020";
+    console.log("adServerAddress" + adServerAddress);
+    return adServerAddress;
+}
+
 function safeframelog(msg){
     console.log("safeframe-test.js safeframelog " + msg);
 }
