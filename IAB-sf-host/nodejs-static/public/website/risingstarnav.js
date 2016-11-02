@@ -9,7 +9,7 @@ document.write(' \
 		<li><a href="./portrait_sample.html">Portrait</a></li> \
 		<li><a href="./pushdown_sample.html">Pushdown</a></li> \
 		<li><a href="./sidekick_sample.html">Sidekick</a></li> \
-		<li><a href="./viewability_sample.html">Sidekick</a></li> \
+		<li><a href="./viewability_sample.html">Viewability</a></li> \
 		<li><a class="unavailable" href="#">Slider</a></li> \
 </ul> \
 ');

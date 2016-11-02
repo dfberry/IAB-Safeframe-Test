@@ -1,39 +1,39 @@
 # Run docker-compose build
-# Run docker-compose up
+# Run docker-compose up --no-recreate
+# docker exec -it -u root <host-container-id> /bin/bash
+# docker inspect <container id>
+# docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
 # Live long and prosper
 
 version: '2'
 
 services:
 
-  sf-host:
-    container_name: sf-host
-    image: sf-host
+#http://localhost:8010/website/
+  host: 
+    container_name: host-node
+    image: host-node
     build:
       context: .
       dockerfile: ./IAB-sf-host/Dockerfile
-    environment:
-      - NODE_ENV=development
     ports:
       - "8010:8010"
       - "8011:8011"
     networks:
-      - safeframe-test
+      - safeframe-network
 
-  sf-ads:
-    container_name: sf-ads
-    image: sf-ads
+  ads:
+    container_name: ads-node
+    image: ads-node
     build:
       context: .
       dockerfile: ./IAB-sf-ads/Dockerfile
-    environment:
-      - NODE_ENV=development
     ports:
       - "8020:8020"
       - "8021:8021"
     networks:
-      - safeframe-test
+      - safeframe-network
       
 networks:
-  safeframe-test:
+  safeframe-network:
     driver: bridge

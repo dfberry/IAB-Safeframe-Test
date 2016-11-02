@@ -10,21 +10,16 @@
 # base image 
 FROM node:latest
 
-RUN mkdir -p /home/nodejs/ && \
+RUN mkdir -p /home/nodejs/IAB-Safeframe-Test/IAB-sf-host && \
     groupadd -r nodejs && \
     useradd -r -g nodejs -d /home/nodejs nodejs && \
     chown -R nodejs:nodejs /home/nodejs
 
-RUN apt-get update
-RUN apt-get install nano
-RUN npm install -g lite-server
+#install repo https://github.com/dfberry/IAB-Safeframe-Test
+#lite-server // don't need to specify the config file, lite-serve calls it by default
+#update
+#install nano
 
-WORKDIR /home/nodejs/
-RUN git clone https://github.com/dfberry/IAB-Safeframe-Test.git host-IAB-Safeframe-Test
-
-WORKDIR /home/nodejs/host-IAB-Safeframe-Test/IAB-sf-host
-
+WORKDIR /home/nodejs/IAB-Safeframe-Test
 USER nodejs
-
-#using bs-config.js to set port to 8010 and server from /ads
-#CMD lite-server 
+CMD tail -f /dev/null
