@@ -22,4 +22,5 @@ RUN mkdir -p /home/nodejs/IAB-Safeframe-Test/IAB-sf-host && \
 
 WORKDIR /home/nodejs/IAB-Safeframe-Test
 USER nodejs
+EXPOSE 8010
 CMD tail -f /dev/null

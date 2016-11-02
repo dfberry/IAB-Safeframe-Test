@@ -22,4 +22,5 @@ RUN npm install lite-server -g
 
 WORKDIR /home/nodejs/IAB-Safeframe-Test
 USER nodejs
+EXPOSE 8020
 CMD tail -f /dev/null 
