@@ -1,7 +1,7 @@
 // ip should alwasy be 127.21.0.3 as long as ads server is second in docker-compose list
 // but is also available via "ads:8020" because of name in docker-compose.yml file"
 function getAdServerAddress(){
-    var adServerAddress="http://ads:8020";
+    var adServerAddress="http://127.21.0.3:8020";
     console.log("adServerAddress" + adServerAddress);
     return adServerAddress;
 }
