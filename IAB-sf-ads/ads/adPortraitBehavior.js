@@ -6,7 +6,7 @@ var adState = "ready";
 
 function status_update(status, data)
 {
-	console.log("ads adPortrailBehavior.js::status_update");
+	console.log("ads adPortrailBehavior.js::status_update status=" + status + " data=" + JSON.stringify(data));
 	if(status == "expanded") {
 		adState = "ready"
 	var geo = extern.geom();
@@ -35,7 +35,7 @@ function status_update(status, data)
 
 function collapseModule(id)
 {
-	console.log("ads adPortraitBehavior.js::collapseModule");
+	console.log("ads adPortraitBehavior.js::collapseModule id=" + id);
 	if(adState != "ready")
 		return;
 	
@@ -61,7 +61,7 @@ function collapseModule(id)
 
 function expandModule(id)
 {
-	console.log("ads adPortraitBehavior.js::expandModule");
+	console.log("ads adPortraitBehavior.js::expandModule id=" + id);
 	if(adState != "ready")
 		return;
 		
@@ -93,6 +93,7 @@ function expandModule(id)
 	
 	// ?Check ext.geom for dimensions and locations of the container?
 	var geo = extern.geom();
+	console.log("ads adPortraitBehavior.js::expandModule geo=" + JSON.stringify(geo));
 	
 	if(id == 1)
 	{
@@ -117,6 +118,7 @@ function expandModule(id)
 }
 
 if (extern) {
+	console.log("ads adPortraitBehavior.js::expandModule extern==true");
 	try {
 		var h = 1050;
 		var w = 300;
@@ -139,4 +141,6 @@ if (extern) {
 	} catch(e) {
 		writeLog("Error testing host feature support.");
 	}
+} else {
+	console.log("ads adPortraitBehavior.js::expandModule extern==false");
 }

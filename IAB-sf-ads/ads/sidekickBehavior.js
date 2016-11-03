@@ -56,6 +56,7 @@ function collapseAd(){
 
 
 if (extern) {
+	console.log("ads sidekickBehavior.js extern==true");
 	try {
 		var h = 1050;
 		var w = 300;
@@ -78,4 +79,6 @@ if (extern) {
 	} catch(e) {
 		writeLog("Error testing host feature support.");
 	}
+} else {
+	console.log("ads sidekickBehavior.js extern==false");
 }
