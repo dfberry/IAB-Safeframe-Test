@@ -40,5 +40,5 @@ EXPOSE 8020
 
 # make sure primary pid isn't tied to website so container will stay up
 #CMD tail -f /dev/null
-CMD lite-serverß
+CMD lite-server
 

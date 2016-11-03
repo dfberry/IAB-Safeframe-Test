@@ -7,7 +7,7 @@
 # Git hub: https://github.com/dfberry/IAB-Safeframe-Test
 # tail -f /dev/null
 #  $ docker exec -it -u root 2fc831dad624 /bin/bash -c "export TERM=xterm; exec bash"
-
+#docker run -it -p 8020:8020 5014d0c951ba tail -f /dev/null
 
 # base image 
 FROM node:latest
