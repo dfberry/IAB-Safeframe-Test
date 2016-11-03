@@ -9,10 +9,12 @@ version: '2'
 
 services:
 
+
+
 #http://localhost:8010/website/
   host: 
-    container_name: host-node
-    image: host-node
+    container_name: sf-host-node
+    image: sf-host-node
     build:
       context: .
       dockerfile: ./IAB-sf-host/Dockerfile
@@ -21,10 +23,12 @@ services:
       - "8011:8011"
     networks:
       - safeframe-network
+    environment:
+      - VIRTUAL_HOST=safeframe-host.localhost
 
   ads:
-    container_name: ads-node
-    image: ads-node
+    container_name: sf-ads-node
+    image: sf-ads-node
     build:
       context: .
       dockerfile: ./IAB-sf-ads/Dockerfile
@@ -33,7 +37,28 @@ services:
       - "8021:8021"
     networks:
       - safeframe-network
-      
+    environment:
+      - VIRTUAL_HOST=safeframe-ads.localhost
+
+
+  whoami:
+    image: jwilder/whoami
+    container_name: sf-whoami
+    environment:
+      - VIRTUAL_HOST=whoami.localhost
+    networks:
+      - safeframe-network
+
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: sf-nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - safeframe-network
+
 networks:
   safeframe-network:
     driver: bridge
