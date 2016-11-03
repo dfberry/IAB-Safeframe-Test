@@ -3,7 +3,7 @@
 
 8010 = host site - site runs with or without ads, site links to ad server
 8020 = ad server - site returns ads only
-8030 = external assets server - site returns assets to ad server
+
 
 safe-frame needs the system to start no in the website or ads dir but 1 dir up so make sure
 to request into ads or website to get correct files
