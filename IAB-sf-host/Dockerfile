@@ -6,7 +6,7 @@
 
 # Git hub: https://github.com/dfberry/IAB-Safeframe-Test
 # tail -f /dev/null
-#  $ docker exec -it -u root 2fc831dad624 /bin/bash -c "export TERM=xterm; exec bash"
+#  $ docker exec -it -u root d55be534f649 /bin/bash -c "export TERM=xterm; exec bash"
 #docker run -it -p 8020:8020 5014d0c951ba tail -f /dev/null
 
 # base image 
@@ -37,6 +37,6 @@ USER nodejs
 EXPOSE 8010
 
 # make sure primary pid isn't tied to website so container will stay up
-#CMD tail -f /dev/null 
-CMD lite-server
+CMD tail -f /dev/null 
+# CMD lite-server
 
