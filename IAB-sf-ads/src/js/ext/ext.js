@@ -164,6 +164,7 @@ var NULL					= null,
 			}
 			if (id) oSS.id = id;
 
+			console.log("ads ext.js::_create_stylesheet appends a style sheet to head");
 			_append(oHead,oSS);
 		} catch (e) {
 				//log
@@ -266,6 +267,7 @@ var NULL					= null,
 
 	function _reset_inline_handlers()
 	{
+		console.log("ads ext.js::_reset_inline_handlers");
 		var e;
 
 		try {
@@ -865,6 +867,7 @@ var NULL					= null,
 				temp			= render_conf.bg;
 
 				if (geom_info) {
+					console.log("ads ext.js::construction geom_info=" + JSON.stringify(geom_info));
 					geom_info = ParamHash(_ue(geom_info), NULL,NULL,TRUE,TRUE);
 					if (!geom_info.self || !geom_info.exp) geom_info = NULL;
 				}
@@ -873,6 +876,7 @@ var NULL					= null,
 				if (!host_cname) {
 					host_cname	= d.referrer;
 					host_cname	= host_cname.substring(0,host_cname.indexOf("/",9));
+					console.log("ads ext.js::construction host_cname=" + host_cname);
 				}
 
 				if (temp) { _create_stylesheet(_cstr(["#sf_body { background-color: ",temp, "; }"]), "sf_bg_css"); }
@@ -1554,12 +1558,14 @@ var NULL					= null,
 	*/
 	function status()
 	{
-		console.log("ads ext.js::status ");
+		
 		if(pending_msg){
 			if(pending_msg.cmd == EXPAND_COMMAND) {
+				console.log("ads ext.js::status==STATUS_EXPANDING");
 				return STATUS_EXPANDING;
 			}
 			else if(pending_msg.cmd == COLLAPSE_COMMAND) {
+				console.log("ads ext.js::status==COLLAPSE_COMMAND");
 				return STATUS
 			}
 		}

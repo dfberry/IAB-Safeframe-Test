@@ -27,6 +27,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 /** @ignore */
 (function(win) {
 
+console.log("host ext.js function(win)");
+
 var NULL					= null,
 	TRUE					= true,
 	FALSE					= false,
@@ -160,7 +162,7 @@ var NULL					= null,
 				}
 			}
 			if (id) oSS.id = id;
-
+			console.log("host ext.js::_create_stylesheet appends a style sheet to head");
 			_append(oHead,oSS);
 		} catch (e) {
 				//log
@@ -263,6 +265,7 @@ var NULL					= null,
 
 	function _reset_inline_handlers()
 	{
+		console.log("host ext.js::_reset_inline_handlers");
 		var e;
 
 		try {
@@ -459,6 +462,7 @@ var NULL					= null,
 
 	function _handle_load()
 	{
+		console.log("ads ext.js::_handle_unload");
 		if (loaded) return;
 		loaded = TRUE;
 
@@ -481,6 +485,7 @@ var NULL					= null,
 
 	function _handle_msg(evt)
 	{
+		console.log("host ext.js::_handle_msg");
 		var str, src, org, e, msg_params, msg_guid, msg_obj;
 
 		/** TODO, also validate origin */
@@ -532,6 +537,7 @@ var NULL					= null,
 
 	function _call_raw_evt_func(type, f, remove)
 	{
+		console.log("host ext.js::_call_raw_evt_func");
 		var bOK = FALSE, ie_f, w3c_f, e;
 		if (remove) {
 			ie_f 	= ie_old_detach || w3c_old_detach;
@@ -582,6 +588,7 @@ var NULL					= null,
 
 	function _attach_override(type, f)
 	{
+		console.log("host ext.js::_attach_override");
 		var bDoDefault = FALSE;
 
 		type = _cstr(type)[TOLOWERCASE]();
@@ -619,6 +626,7 @@ var NULL					= null,
 
 	function _detach_override(type, f)
 	{
+		console.log("host ext.js::_detach_override");
 		var idx = 0, handler, handlers;
 
 		type = _cstr(type)[TOLOWERCASE]();
@@ -727,6 +735,7 @@ var NULL					= null,
 
 	function _setup_win_evt_props(obj)
 	{
+		console.log("host ext.js::_setup_win_evt_props");
 		var n = lang.noop, O = Object, nobj = {get:n,set:n}, ret = FALSE;
 
 		if (obj) {
@@ -779,6 +788,7 @@ var NULL					= null,
 
 	function _construction(details)
 	{
+		console.log("host ext.js::_construction");
 		var cont = FALSE, ret = TRUE, el, nm, temp, cur_time, guid_time, time_delta, e;
 
 		details = (details && (details instanceof Object)) ? details : {};
@@ -853,14 +863,17 @@ var NULL					= null,
 				temp			= render_conf.bg;
 
 				if (geom_info) {
+					console.log("host ext.js::construction geom_info=" + JSON.stringify(geom_info));
 					geom_info = ParamHash(_ue(geom_info), NULL,NULL,TRUE,TRUE);
 					if (!geom_info.self || !geom_info.exp) geom_info = NULL;
 				}
 
 
 				if (!host_cname) {
+					
 					host_cname	= d.referrer;
 					host_cname	= host_cname.substring(0,host_cname.indexOf("/",9));
+					console.log("host ext.js::construction host_cname=" + host_cname);
 				}
 
 				if (temp) { _create_stylesheet(_cstr(["#sf_body { background-color: ",temp, "; }"]), "sf_bg_css"); }
@@ -929,6 +942,7 @@ var NULL					= null,
 
 	function _render()
 	{
+		console.log("host ext.js::_render");
 		/* The internal method that does the document.write of ad content */
 
 		var html, css;
@@ -980,6 +994,7 @@ var NULL					= null,
 
 	function _call_client_fb(methName, arg1, arg2)
 	{
+		console.log("host ext.js::_call_client_fb " + methName);
 		if (msgclient_fb) msg_clientfb = dom.msgclient_fb;
 		return (methName && msgclient_fb && msgclient_fb[methName] && msgclient_fb[methName](arg1,arg2));
 	}
@@ -999,6 +1014,7 @@ var NULL					= null,
 
 	function _receive_msg(params, evt)
 	{
+		console.log("host ext.js::_receive_msg ");
 		var ret = FALSE, msg, cmd, g, e, data = {};
 
 		if (params) {
@@ -1104,6 +1120,7 @@ var NULL					= null,
 
 	function _send_msg(str, cmd)
 	{
+		console.log("host ext.js::_send_msg ");
 		var id = lang.guid("sf_pnd_cmd"), frame_id = render_params.dest, sent = FALSE, sent_time = lang.time(), params;
 
 		if (!str || !cmd || pending_msg) return;
@@ -1152,6 +1169,7 @@ var NULL					= null,
 
 	function _fire_sandbox_callback(msg, data)
 	{
+		console.log("host ext.js::_fire_sandbox_callback ");
 		var e;
 		try {
 			sandbox_cb(msg, data);
@@ -1224,6 +1242,7 @@ var NULL					= null,
 
 	function _collapse()
 	{
+		console.log("host ext.js::_collapse ");
 		if (!force_collapse && (!is_registered || !is_expanded || pending_msg)) return FALSE;
 		_set_alignment(0, 0);
 		return TRUE;
@@ -1234,6 +1253,7 @@ var NULL					= null,
 	*/
 	function _background(options)
 	{
+		console.log("host ext.js::_background ");
 		var i, k;
 		var content, newObj;
 		var strkeys = ['color','href','imgsrc','tgt'];
@@ -1284,6 +1304,7 @@ var NULL					= null,
 
 	function register(initWidth, initHeight, notify)
     {
+		console.log("host ext.js::register ");
 		if (is_registered || !guid) return;
 
 		initWidth	= _cnum(initWidth, 0, 0);
@@ -1340,6 +1361,7 @@ var NULL					= null,
     */
  function expand(deltaXorDesc, deltaY, p)
     {
+		console.log("host ext.js::expand ");
 		var xn = FALSE, yn = FALSE, doAlign = FALSE,
 			cmd_nm  = (p) ? "exp-push" : EXPAND_COMMAND,
 			cmd_str = ["cmd=", cmd_nm, "&pos=", pos_id],
@@ -1444,6 +1466,7 @@ var NULL					= null,
 
 	function collapse()
 	{
+		console.log("host ext.js::collapse ");
 		if (_collapse()) _send_msg(_cstr(["cmd=",COLLAPSE_COMMAND,"&pos=", pos_id]), COLLAPSE_COMMAND);
 	}
 	
@@ -1459,6 +1482,7 @@ var NULL					= null,
 	*/
 	function bg(bgDes)
 	{
+		console.log("host ext.js::bg ");
 		var does_bg = supports(BACKGROUND_COMMAND);
 
 		if (does_bg && typeof(bgDes) == 'object') {
@@ -1479,6 +1503,7 @@ var NULL					= null,
 
 	function geom()
 	{
+		console.log("host ext.js::geom ");
 		return geom_info;
 	}
 
@@ -1497,6 +1522,7 @@ var NULL					= null,
 
 	function meta(propName, owner_key)
 	{
+		console.log("host ext.js::meta ");
 		var ret = "", shared;
 		if (pos_meta) {
 			if (owner_key) {
@@ -1531,9 +1557,11 @@ var NULL					= null,
 	{
 		if(pending_msg){
 			if(pending_msg.cmd == EXPAND_COMMAND) {
+				console.log("host ext.js::status==STATUS_EXPANDING");
 				return STATUS_EXPANDING;
 			}
 			else if(pending_msg.cmd == COLLAPSE_COMMAND) {
+				console.log("host ext.js::status==COLLAPSE_COMMAND");
 				return STATUS
 			}
 		}
@@ -1561,6 +1589,7 @@ var NULL					= null,
 	*/
 	function cookie(cookieName, cookieData)
 	{
+		console.log("host ext.js::cookie ");
 		var isRead = (cookieData == NULL);
 		
 		var cmd_nm = isRead ? "read-cookie" : "write-cookie";
@@ -1585,6 +1614,7 @@ var NULL					= null,
 
 	function message(content)
 	{
+		console.log("host ext.js::message ");
 		_send_msg(_cstr(["cmd=",MESSAGE_COMMAND,"&pos=", pos_id, "&msg=", content]), MESSAGE_COMMAND);
 	}
 
@@ -1600,6 +1630,7 @@ var NULL					= null,
 	*/
 	function inViewPercentage()
 	{
+		console.log("host ext.js::inViewPercentage ");
 		var iv = _cnum(geom_info && geom_info.self && geom_info.self.iv,-1,0),
 			tv;
 
@@ -1658,6 +1689,7 @@ var NULL					= null,
 
 	(function() {
 
+		console.log("host ext.js::function() - --END-External Vendor/Client API ");
 		var err_info = {}, head_el, err_comment, e;
 
 		if (lang && dom) {
