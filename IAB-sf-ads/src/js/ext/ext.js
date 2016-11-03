@@ -1147,6 +1147,7 @@ var NULL					= null,
 
 		if (can_use_html5) {
 			try {
+				console.log("ads ext.js postMessage");
 				top.postMessage(params.toString(), ((host_cname == "file" || host_cname == "") ? "*" : host_cname));
 				sent = TRUE;
 			} catch (e) {
