@@ -5,11 +5,11 @@
 #  $ docker run -h sfads -it -p 8020:8020 -v /Users/dfberry/repos/IAB/IAB-Safeframe-Test:/home/nodejs/container-IAB-Safeframe-Test sf-ads 
 #  $ docker run -d -p 8020:8020 -v /Users/dfberry/repos/IAB/IAB-Safeframe-Test:/home/nodejs/container-IAB-Safeframe-Test --name ads sf-ads-network tail -f /dev/null
 #  $ docker-compose docker run -d -p 8020:8020 -v /Users/dfberry/repos/IAB/IAB-Safeframe-Test:/home/nodejs/container-IAB-Safeframe-Test --name ads sf-ads-network tail -f /dev/null
-
+#  $ docker exec -it [CONTAINER_ID] /bin/bash -c "export TERM=xterm; exec bash"
 
 # Git hub: https://github.com/dfberry/IAB-Safeframe-Test
 
-LABEL "IAB-sf-ads"
+
 
 # base image 
 FROM node:latest
@@ -20,8 +20,10 @@ RUN mkdir -p /home/nodejs && \
     chown -R nodejs:nodejs /home/nodejs
 
 # add text editor
+ENV TERM xterm
 RUN apt-get update
 RUN apt-get install nano
+
 
 # add static server
 RUN npm install lite-server -g

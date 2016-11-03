@@ -6,8 +6,8 @@
 
 # Git hub: https://github.com/dfberry/IAB-Safeframe-Test
 # tail -f /dev/null
+#  $ docker exec -it [CONTAINER_ID] /bin/bash -c "export TERM=xterm; exec bash"
 
-LABEL "IAB-sf-host"
 
 # base image 
 FROM node:latest
@@ -18,8 +18,10 @@ RUN mkdir -p /home/nodejs/ && \
     chown -R nodejs:nodejs /home/nodejs
 
 # add text editor
+ENV TERM xterm
 RUN apt-get update
 RUN apt-get install nano
+
 
 # add static server
 RUN npm install lite-server -g
