@@ -9,18 +9,33 @@
 
 # Git hub: https://github.com/dfberry/IAB-Safeframe-Test
 
+LABEL "IAB-sf-ads"
+
 # base image 
 FROM node:latest
 
-RUN mkdir -p /home/nodejs/IAB-Safeframe-Test/IAB-sf-ads && \
+RUN mkdir -p /home/nodejs && \
     groupadd -r nodejs && \
     useradd -r -g nodejs -d /home/nodejs nodejs && \
     chown -R nodejs:nodejs /home/nodejs
 
-#install repo https://github.com/dfberry/IAB-Safeframe-Test
+# add text editor
+RUN apt-get update
+RUN apt-get install nano
+
+# add static server
 RUN npm install lite-server -g
 
-WORKDIR /home/nodejs/IAB-Safeframe-Test
+# add repository
+WORKDIR /home/nodejs
+RUN git clone https://github.com/dfberry/IAB-Safeframe-Test.git
+
+WORKDIR /home/nodejs/IAB-Safeframe-Test/IAB-sf-ads
 USER nodejs
+
+# export port used by safeframe hosting website
 EXPOSE 8020
-CMD tail -f /dev/null 
+
+# make sure primary pid isn't tied to website so container will stay up
+CMD tail -f /dev/null
+
