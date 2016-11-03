@@ -13,3 +13,8 @@ http://localhost:8010/website/pushdown_sample.html
 http://localhost:8020/ads/index.html
 
 https://github.com/InteractiveAdvertisingBureau/safeframe/blob/vnext-layer-bg
+
+
+via docker-nginx routing
+http://host.localhost:8010/website/
+host website keeps ads website url name in the /website/safeframe-test.js
