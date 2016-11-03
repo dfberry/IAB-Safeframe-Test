@@ -1147,8 +1147,12 @@ var NULL					= null,
 
 		if (can_use_html5) {
 			try {
-				console.log("ads ext.js postMessage");
-				top.postMessage(params.toString(), ((host_cname == "file" || host_cname == "") ? "*" : host_cname));
+				var paramsForPostMessage = params.toString();
+				var cNameForPostMessage = ((host_cname == "file" || host_cname == "") ? "*" : host_cname);
+				
+				console.log("ads ext.js postMessage params=" + params.toString() + " host_cname=" + cNameForPostMessage);
+
+				top.postMessage(paramsForPostMessage, cNameForPostMessage);
 				sent = TRUE;
 			} catch (e) {
 				sent = FALSE;
