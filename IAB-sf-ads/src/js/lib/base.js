@@ -180,7 +180,7 @@ if (window["$sf"]) {
 	 *
 	*/
 	(function() {
-
+		console.log("ads base.js::function() ");
 		var proto;
 
 		/**

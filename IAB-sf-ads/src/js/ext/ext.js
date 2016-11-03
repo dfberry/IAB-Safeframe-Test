@@ -27,6 +27,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 /** @ignore */
 (function(win) {
 
+console.log("ads ext.js function(win)");
+
 var NULL					= null,
 	TRUE					= true,
 	FALSE					= false,
@@ -137,6 +139,7 @@ var NULL					= null,
 
 	function _create_stylesheet(cssText, id)
 	{
+
 		var oHead, oSS, oTxt, e;
 
 		try {
@@ -441,6 +444,7 @@ var NULL					= null,
 
 	function _handle_unload(evt)
 	{
+		console.log("ads ext.js::_handle_unload");
 		_destruction(evt);
 
 		_nuke_doc();
@@ -459,6 +463,8 @@ var NULL					= null,
 
 	function _handle_load()
 	{
+		console.log("ads ext.js::_handle_load");
+
 		if (loaded) return;
 		loaded = TRUE;
 
@@ -481,6 +487,7 @@ var NULL					= null,
 
 	function _handle_msg(evt)
 	{
+		console.log("ads ext.js::_handle_msg");
 		var str, src, org, e, msg_params, msg_guid, msg_obj;
 
 		/** TODO, also validate origin */
@@ -532,6 +539,7 @@ var NULL					= null,
 
 	function _call_raw_evt_func(type, f, remove)
 	{
+		console.log("ads ext.js::_call_raw_evt_func");
 		var bOK = FALSE, ie_f, w3c_f, e;
 		if (remove) {
 			ie_f 	= ie_old_detach || w3c_old_detach;
@@ -582,6 +590,7 @@ var NULL					= null,
 
 	function _attach_override(type, f)
 	{
+		console.log("ads ext.js::_attach_override");
 		var bDoDefault = FALSE;
 
 		type = _cstr(type)[TOLOWERCASE]();
@@ -619,6 +628,7 @@ var NULL					= null,
 
 	function _detach_override(type, f)
 	{
+		console.log("ads ext.js::_detach_override");
 		var idx = 0, handler, handlers;
 
 		type = _cstr(type)[TOLOWERCASE]();
@@ -727,6 +737,7 @@ var NULL					= null,
 
 	function _setup_win_evt_props(obj)
 	{
+		console.log("ads ext.js::_setup_win_evt_props");
 		var n = lang.noop, O = Object, nobj = {get:n,set:n}, ret = FALSE;
 
 		if (obj) {
@@ -779,6 +790,7 @@ var NULL					= null,
 
 	function _construction(details)
 	{
+		console.log("ads ext.js::_construction");
 		var cont = FALSE, ret = TRUE, el, nm, temp, cur_time, guid_time, time_delta, e;
 
 		details = (details && (details instanceof Object)) ? details : {};
@@ -929,6 +941,7 @@ var NULL					= null,
 
 	function _render()
 	{
+		console.log("ads ext.js::_render");
 		/* The internal method that does the document.write of ad content */
 		debugger;
 		var html, css;
@@ -980,6 +993,7 @@ var NULL					= null,
 
 	function _call_client_fb(methName, arg1, arg2)
 	{
+		console.log("ads ext.js::_call_client_fb " + methName);
 		if (msgclient_fb) msg_clientfb = dom.msgclient_fb;
 		return (methName && msgclient_fb && msgclient_fb[methName] && msgclient_fb[methName](arg1,arg2));
 	}
@@ -999,6 +1013,7 @@ var NULL					= null,
 
 	function _receive_msg(params, evt)
 	{
+		console.log("ads ext.js::_receive_msg ");
 		var ret = FALSE, msg, cmd, g, e, data = {};
 
 		if (params) {
@@ -1104,6 +1119,7 @@ var NULL					= null,
 
 	function _send_msg(str, cmd)
 	{
+		console.log("ads ext.js::_send_msg ");
 		var id = lang.guid("sf_pnd_cmd"), frame_id = render_params.dest, sent = FALSE, sent_time = lang.time(), params;
 
 		if (!str || !cmd || pending_msg) return;
@@ -1152,6 +1168,7 @@ var NULL					= null,
 
 	function _fire_sandbox_callback(msg, data)
 	{
+		console.log("ads ext.js::_fire_sandbox_callback ");
 		var e;
 		try {
 			sandbox_cb(msg, data);
@@ -1224,6 +1241,7 @@ var NULL					= null,
 
 	function _collapse()
 	{
+		console.log("ads ext.js::_collapse ");
 		if (!force_collapse && (!is_registered || !is_expanded || pending_msg)) return FALSE;
 		_set_alignment(0, 0);
 		return TRUE;
@@ -1234,6 +1252,7 @@ var NULL					= null,
 	*/
 	function _background(options)
 	{
+		console.log("ads ext.js::_background ");
 		var i, k;
 		var content, newObj;
 		var strkeys = ['color','href','imgsrc','tgt'];
@@ -1284,6 +1303,7 @@ var NULL					= null,
 
 	function register(initWidth, initHeight, notify)
     {
+		console.log("ads ext.js::register ");
 		if (is_registered || !guid) return;
 
 		initWidth	= _cnum(initWidth, 0, 0);
@@ -1340,6 +1360,7 @@ var NULL					= null,
     */
  function expand(deltaXorDesc, deltaY, p)
     {
+		console.log("ads ext.js::expand ");
 		var xn = FALSE, yn = FALSE, doAlign = FALSE,
 			cmd_nm  = (p) ? "exp-push" : EXPAND_COMMAND,
 			cmd_str = ["cmd=", cmd_nm, "&pos=", pos_id],
@@ -1444,6 +1465,7 @@ var NULL					= null,
 
 	function collapse()
 	{
+		console.log("ads ext.js::collapse ");
 		if (_collapse()) _send_msg(_cstr(["cmd=",COLLAPSE_COMMAND,"&pos=", pos_id]), COLLAPSE_COMMAND);
 	}
 	
@@ -1459,6 +1481,7 @@ var NULL					= null,
 	*/
 	function bg(bgDes)
 	{
+		console.log("ads ext.js::bg ");
 		var does_bg = supports(BACKGROUND_COMMAND);
 
 		if (does_bg && typeof(bgDes) == 'object') {
@@ -1479,6 +1502,7 @@ var NULL					= null,
 
 	function geom()
 	{
+		console.log("ads ext.js::geom ");
 		return geom_info;
 	}
 
@@ -1497,6 +1521,7 @@ var NULL					= null,
 
 	function meta(propName, owner_key)
 	{
+		console.log("ads ext.js::meta ");
 		var ret = "", shared;
 		if (pos_meta) {
 			if (owner_key) {
@@ -1529,6 +1554,7 @@ var NULL					= null,
 	*/
 	function status()
 	{
+		console.log("ads ext.js::status ");
 		if(pending_msg){
 			if(pending_msg.cmd == EXPAND_COMMAND) {
 				return STATUS_EXPANDING;
@@ -1561,6 +1587,7 @@ var NULL					= null,
 	*/
 	function cookie(cookieName, cookieData)
 	{
+		console.log("ads ext.js::cookie ");
 		var isRead = (cookieData == NULL);
 		
 		var cmd_nm = isRead ? "read-cookie" : "write-cookie";
@@ -1585,6 +1612,7 @@ var NULL					= null,
 
 	function message(content)
 	{
+		console.log("ads ext.js::message ");
 		_send_msg(_cstr(["cmd=",MESSAGE_COMMAND,"&pos=", pos_id, "&msg=", content]), MESSAGE_COMMAND);
 	}
 
@@ -1600,6 +1628,7 @@ var NULL					= null,
 	*/
 	function inViewPercentage()
 	{
+		console.log("ads ext.js::inViewPercentage ");
 		var iv = _cnum(geom_info && geom_info.self && geom_info.self.iv,-1,0),
 			tv;
 
@@ -1658,6 +1687,7 @@ var NULL					= null,
 
 	(function() {
 
+		console.log("ads ext.js::function() - --END-External Vendor/Client API ");
 		var err_info = {}, head_el, err_comment, e;
 
 		if (lang && dom) {
