@@ -6,6 +6,7 @@ var adState = "ready";
 
 function status_update(status, data)
 {
+	console.log("ads adPortrailBehavior.js::status_update");
 	if(status == "expanded") {
 		adState = "ready"
 	var geo = extern.geom();
@@ -34,6 +35,7 @@ function status_update(status, data)
 
 function collapseModule(id)
 {
+	console.log("ads adPortraitBehavior.js::collapseModule");
 	if(adState != "ready")
 		return;
 	
@@ -59,6 +61,7 @@ function collapseModule(id)
 
 function expandModule(id)
 {
+	console.log("ads adPortraitBehavior.js::expandModule");
 	if(adState != "ready")
 		return;
 		
