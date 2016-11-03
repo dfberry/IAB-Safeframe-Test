@@ -29,6 +29,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 if (window["$sf"]) {
+	console.log("ads base.js window $sf");
 	try {
 		$sf.ver = "1-1-1";
 		$sf.specVersion = "1.1";
@@ -1164,7 +1165,7 @@ if (window["$sf"]) {
 			} catch (e) {
 				ret.nodejs = 0;
 			}
-
+			console.log("ads base.js::parse_ua ret=" + JSON.stringify(ret));
 			return ret;
 	    }
 
@@ -2277,6 +2278,7 @@ if (window["$sf"]) {
 
 		function replace_iframe(attrs, cssText, parRef, cb, xmsgCB)
 		{
+			console.log("ads base.js::replace_iframe top");
 			var cl, el, frameEl, elID, tgn, parNode, e;
 
 			attrs		= attrs || {};
@@ -2325,6 +2327,9 @@ if (window["$sf"]) {
 			} catch (e) { }
 
 			cl = el = attrs = frameEl = parNode = cb = NULL;
+
+			console.log("ads base.js::replace_iframe bottom");
+
 			return elt(elID);
 		}
 
@@ -2348,6 +2353,7 @@ if (window["$sf"]) {
 
 		function iframe_view(el)
 		{
+			console.log("ads base.js::iframe_view top");
 			var win, elWin, elDoc, frame_list, frame, fe, idx = 0, e, err;
 			try {
 				win = el.contentWindow || NULL;
@@ -2378,6 +2384,7 @@ if (window["$sf"]) {
 			} catch (e) {
 				win = NULL;
 			}
+			console.log("ads base.js::iframe_view bottom");
 			return win;
 		}
 
@@ -2390,7 +2397,7 @@ if (window["$sf"]) {
 		function logInfo(message)
 		{
 			if(win.console && console.log){
-				console.log(message);
+				console.log("ads " + message);
 			}
 		}
 
@@ -2403,10 +2410,10 @@ if (window["$sf"]) {
 		function logError(message)
 		{
 			if(win.console && console.error){
-				console.error(message);
+				console.error("ads " + message);
 			}
 			else if(win.console && console.log){
-				console.log(message);
+				console.log("ads " + message);
 			}
 		}
 

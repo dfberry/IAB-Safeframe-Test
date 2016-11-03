@@ -13,8 +13,8 @@ services:
 
 #http://localhost:8010/website/
   host: 
-    container_name: sf-host-node
-    image: sf-host-node
+    container_name: sf-host
+    image: sf-host
     build:
       context: .
       dockerfile: ./IAB-sf-host/Dockerfile
@@ -24,11 +24,11 @@ services:
     networks:
       - safeframe-network
     environment:
-      - VIRTUAL_HOST=safeframe-host.localhost
+      - VIRTUAL_HOST=safeframe-host
 
   ads:
-    container_name: sf-ads-node
-    image: sf-ads-node
+    container_name: sf-ads
+    image: sf-ads
     build:
       context: .
       dockerfile: ./IAB-sf-ads/Dockerfile
@@ -38,7 +38,7 @@ services:
     networks:
       - safeframe-network
     environment:
-      - VIRTUAL_HOST=safeframe-ads.localhost
+      - VIRTUAL_HOST=safeframe-ads
 
 
   whoami:

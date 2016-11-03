@@ -217,6 +217,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 	function boot()
 	{
+		_log("ads boot.js - boot");
 		var	script_tags		= (_tags && _tags("script")) || [],
 			boot_positions 	= [],
 			idx 			= 0,
