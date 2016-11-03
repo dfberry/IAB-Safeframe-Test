@@ -19,21 +19,22 @@ Actual source is translated into Javascript string and placed in "billboardAdBoo
 	display: none;
 }
 </style>
-
+<script type="text/javascript" src="safeframe-test.js" ></script>
 <script>
 function preCollapse(){
 	collapseAd();
 }
+
 </script>
 
 <div id="collapsedAd">
-<div id="showAdButton" onclick="expandAd()">Show ad <img src="http://ads.localhost:8020/ads/downarrow.png" /></div>
+<div id="showAdButton" onclick="expandAd()">Show ad <img src="function getAdServerAddress() + '/ads/downarrow.png'" /></div>
 </div>
 
 <div id="expandedAd">
-<a href="javascript:collapseAd();" onclick="collapseAd();return false;"><img src="http://ads.localhost:8020/ads/backupImage.png"
+<a href="javascript:collapseAd();" onclick="collapseAd();return false;"><img src="function getAdServerAddress() + '/ads/backupImage.png'"
 	id="adImage"
 	style="width:970px;height:250px;border:0;" /></a>
 </div>
 
-<script src="http://ads.localhost:8020/ads/adScriptBehavior.js"></script>
+<script src="function getAdServerAddress() + '/ads/adScriptBehavior.js'"></script>

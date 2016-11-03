@@ -1,4 +1,4 @@
-# Run docker-compose build
+# Run docker-compose build --no-cache
 # Run docker-compose up --no-recreate
 # docker exec -it -u root <host-container-id> /bin/bash
 # docker inspect <container id>
