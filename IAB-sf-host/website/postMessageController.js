@@ -11,7 +11,7 @@ window.onload = function() {
 		e.preventDefault();
 
 		// Send a message with the text 'Hello Treehouse!' to the receiver window.
-		receiver.postMessage('Hello Treehouse!', 'http://demos.matt-west.com');
+		receiver.postMessage('Hello Treehouse!', '*');
 	}
 
 	// Add an event listener that will execute the sendMessage() function
