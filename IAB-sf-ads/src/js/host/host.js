@@ -1744,11 +1744,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			cb			= pipe && pipe._xmsgcb,
 			ret			= FALSE;
 
-		console.log("ads host.js::_handle_msg_from_outside " + fr_win + " to " + msg_win + " msg " + data);
 
 
 		if (pipeGUID && dataGUID && dataGUID == pipeGUID && msg_win && fr_win && fr_win == msg_win) {
 			try {
+				console.log("ads host.js::_handle_msg_from_outside " + fr_win + " to " + msg_win + " msg " + data);
+
 				ret = cb(params.msg);
 			} catch (e) {
 				ret = FALSE;
