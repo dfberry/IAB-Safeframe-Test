@@ -2354,7 +2354,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 	function _handle_msg_evt(data)
 	{
 		var msgObj, ret = FALSE, info;
-		sf.lib.logger.log("logger test");
 
 		msgObj 	= ParamHash(data,NULL,NULL,TRUE,TRUE);
 		if (msgObj && msgObj.pos) {
@@ -2386,7 +2385,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 						_set_background(msgObj);
 						ret = TRUE;
 					case NOTIFY_GEOM_UPDATE:
-						sf.lib.logger.log("Geom update complete: " + msgObj.pos);
 						ret = TRUE;
 					break;
 					case "read-cookie":

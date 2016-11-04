@@ -91,16 +91,12 @@ top level domain from the host site.
 		<script type="text/javascript">
 		function posMessageCallback(id, msgName, data){
 
-			console.log("host posMessageCallback, id = " + id);
-			console.log("host posMessageCallback, msgName = " + msgName);
-			console.log("host posMessageCallback, data = " + data);
-
 			if(msgName == "error"){
-				console.log("host posMessageCollback error ");
+				
 				var log = document.getElementById("logger");
 				var msg = ["error in ad ", id];
 				if(data && data.errors){
-					console.log("host pushing data errors");
+					
 					msg.push(data.errors);
 				}
 				msg.push("<br/>");

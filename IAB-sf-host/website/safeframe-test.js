@@ -2,7 +2,7 @@
 // but is also available via "ads:8020" because of name in docker-compose.yml file"
 function getAdServerAddress(){
     var adServerAddress="http://ads.localhost:8020";
-    console.log("adServerAddress" + adServerAddress);
+    console.log("adServerAddress " + adServerAddress);
     return adServerAddress;
 }
 
@@ -10,7 +10,7 @@ function safeframelog(msg){
     console.log("safeframe-test.js safeframelog " + msg);
 }
 function titleModified() {
-    window.alert("safeframe-test.js Title modifed");
+    console.log("safeframe-test.js Title modifed");
 }
 
 window.onload = function() {

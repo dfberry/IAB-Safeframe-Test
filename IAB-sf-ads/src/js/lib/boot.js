@@ -217,7 +217,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 	function boot()
 	{
-		console.log("ads boot.js::boot ");
 		_log("ads boot.js - boot");
 		var	script_tags		= (_tags && _tags("script")) || [],
 			boot_positions 	= [],
@@ -409,7 +408,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 		if (boot_positions.length) {
 			try {
-			console.log("ads boot.js::boot - sf_host.render " + JSON.stringify(boot_positions));
 				sf_host.render(boot_positions);
 			} catch (e) {
 				_log("failed during rendering " + e.message, TRUE);

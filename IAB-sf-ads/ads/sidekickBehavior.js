@@ -56,7 +56,6 @@ function collapseAd(){
 
 
 if (extern) {
-	console.log("ads sidekickBehavior.js extern==true");
 	try {
 		var h = 1050;
 		var w = 300;

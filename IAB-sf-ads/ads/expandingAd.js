@@ -12,14 +12,14 @@ var extern = window.extern || $sf.ext;
 var sfAPI = extern;
 
 	function writeLog(message){
-		console.log("ads expandingAd.js::writeLog");
+
 		//debugger;
 		var el = document.getElementById("feedback");
 		el.innerHTML += message + "<br />";
 	}
 
 	function testGeometry(){
-		console.log("ads expandingAd.js::testGeometry");
+
 		writeLog("=====================");
 		writeLog("start geom");
 		//debugger;
@@ -35,7 +35,7 @@ var sfAPI = extern;
 	}
 	
 	function updateInViewDisplay(){
-		console.log("ads expandingAd.js::updateInViewDisplay");
+
 		var totalViewable = extern.inViewPercentage();
 
 		var elem = document.getElementById("viewInfo");
@@ -44,7 +44,7 @@ var sfAPI = extern;
 
 	function status_update(status, data)
 	{
-		console.log("ads expandingAd.js::status_update");
+
 	//debugger;
 		if(status == "expanded"){
 		} 
@@ -62,7 +62,6 @@ var sfAPI = extern;
 	}
 	
 	function expandAd(){
-		console.log("ads expandingAd.js::expandAd");
 		var g, ex;
 
 		writeLog("Ad expand on mouseover");
@@ -83,12 +82,10 @@ var sfAPI = extern;
 	}	
 
 	function collapseAd(){
-		console.log("ads expandingAd.js::collapseAd");
 		$sf.ext.collapse();
 	}
 
 	if (extern) {
-		console.log("ads expandingAd.js:: extern==true");
 		try {
 			extern.register(720, 90, status_update);
 		} catch (e) {

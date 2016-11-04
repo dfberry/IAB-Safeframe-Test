@@ -4,9 +4,6 @@ window.onload = function() {
 	var externalDomain = document.getElementById('externalDomain').value;
 	var message = document.getElementById('message').value;
 
-	console.log("externalDomain " + externalDomain);
-	console.log("message " + message);
-
 	// Get a reference to the 'Send Message' button.
 	var btn = document.getElementById('send');
 

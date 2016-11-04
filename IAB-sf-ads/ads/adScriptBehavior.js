@@ -8,17 +8,14 @@ var hostSupports = {};
  function writeLog(message){
   var el = document.getElementById("feedback");
   if(el) el.innerHTML += message + "<br />";
-  console.log("ads adScriptBehavior.js::writeLog " + message);
  }
  
 function priorityLog(message) {
 	var el = document.getElementById("feedback");
 	if(el) el.innerHTML = message;
-	console.log("ads adScriptBehavior.js::priorityLog " + message);
 }
 
 function getPropsAsString(obj) {
-	console.log("ads adScriptBehavior.js::getPropsAsString ");
 	var s = "";
 	for (var prop in obj) {
 	  if (typeof obj[prop] != 'function') {
@@ -29,7 +26,6 @@ function getPropsAsString(obj) {
 }
 	
 function examineObject(obj) {
-	console.log("ads adScriptBehavior.js::examineObject ");
 	var funcs = [];
 	var fields = [];
 	for (var prop in obj) {
@@ -54,7 +50,6 @@ function examineObject(obj) {
  }*/
  function status_update(status, data)
  {
-	 console.log("ads adScriptBehavior.js::status_update status=" + status + " data=" + JSON.stringify(data));
 	//writeLog(">" + status + examineObject(data));
 	if(status == "expanded") {
 		//priorityLog("Expanded!!");
@@ -97,7 +92,6 @@ function examineObject(obj) {
 */
 function setCookie(ad_state,newValue,exdays)
 {
-	console.log("ads adPortrailBehavior.js::setCookie");
 	// Prevent multiple setCookie calls
 	if(settingCookie || !hostSupports['write-cookie']) {
 		writeLog("Gave up setting cookie");
@@ -128,7 +122,6 @@ function setCookie(ad_state,newValue,exdays)
 */
 function getCookie(ad_state, handler)
 {
-	console.log("ads adPortrailBehavior.js::getCookie");
 	if(fetchingCookie || !hostSupports['read-cookie'])
 		return false;
 	
@@ -149,7 +142,7 @@ function getCookie(ad_state, handler)
  * Expand the ad by calling the SafeFrame API
  */
  function expandAd(){
-	console.log("ads adPortrailBehavior.js::expandAd");
+
   var g, ex, obj;
 	if ($sf.ext) {
 		   try {
@@ -195,7 +188,7 @@ function getCookie(ad_state, handler)
 
  function collapseAd(){
 
-console.log("ads adPortrailBehavior.js::collapseAd");
+
 
   $sf.ext.collapse();
   window.setTimeout(function(){
@@ -212,7 +205,6 @@ console.log("ads adPortrailBehavior.js::collapseAd");
 
  function checkStoredState()
  {
-	 console.log("ads adPortrailBehavior.js::checkStoredState");
 
 	var b = getCookie("flashBrandAdState", (function(cookieValue) {
 		//writeLog("got: " + cookieValue);
@@ -239,7 +231,7 @@ console.log("ads adPortrailBehavior.js::collapseAd");
  }
 
  if (extern) {
-	 console.log("ads adPortrailBehavior.js::checkStoredState extern==true");
+
 	try {
 		var h = 1;
 		var w = 970;
@@ -273,7 +265,7 @@ console.log("ads adPortrailBehavior.js::collapseAd");
 	//writeLog(examineObject(hostSupports));
 		//expandAd(window.sampleAdDim);
 		//var s = extern.status();
-console.log("ads adScriptBehavior.js::function() - before checkStoredState");
+
  checkStoredState();
  /*setTimeout(function(){
 	// May not have returned...

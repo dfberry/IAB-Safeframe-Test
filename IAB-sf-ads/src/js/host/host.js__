@@ -858,7 +858,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
      	rect.t += t;
      	rect.l += l;
-		 console.log("ads host.js::_calcBorders, rect = " + JSON.stringify(rect));
      	return rect;
     }
 
@@ -1671,7 +1670,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 	{
 		if (!msghostfb) msghostfb = dom.msghost_fb;
 
-		console.log("ads host.js::_call_xmsg_host_fb methName " + methName);
 
 		return methName && msghostfb && msghostfb[methName] && msghostfb[methName](arg1,arg2,arg3);
 	}
@@ -1748,7 +1746,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 		if (pipeGUID && dataGUID && dataGUID == pipeGUID && msg_win && fr_win && fr_win == msg_win) {
 			try {
-				console.log("ads host.js::_handle_msg_from_outside " + fr_win + " to " + msg_win + " msg " + data);
+				("ads host.js::_handle_msg_from_outside " + fr_win + " to " + msg_win + " msg " + data);
 
 				ret = cb(params.msg);
 			} catch (e) {
@@ -1777,8 +1775,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 		var pipe 	= tgtID && msg_pipes[tgtID],
 			success = FALSE,
 			msgObj, w, el, e;
-
-			console.log("ads host.js::send_msg_to_child_iframe - tgtID " + tgtID + " " + data)
 
 		if (!pipe) {
 			success = _call_xmsg_host_fb("send",tgtID, data);
@@ -1919,8 +1915,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 	{
 		var tgtID;
 
-		console.log("ads host.js::attach_iframe_msging");
-
 		if (_tagName(el) == "iframe") {
 			tgtID 	= _attr(el,"id");
 			if (tgtID && pipe && (pipe instanceof ParamHash) && tgtID == pipe.id) {
@@ -1952,7 +1946,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 	function detach_iframe_msging(el)
 	{
-		console.log("ads host.js::detach_iframe_msging");
 
 		var id		= _attr(el,"id"),
 			pipe	= id && msg_pipes[id],
@@ -2002,7 +1995,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 	function _fire_pub_callback(cb_name /* args to call back */)
 	{
-		console.log("ads host.js::_fire_pub_callback");
 
 		var cb_args = [], args = arguments, len = args[LEN], 
 			idx = 0, f, 
@@ -2149,8 +2141,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     			msgObj.pos		= posID;
     			msgObj.cmd		= NOTIFY_GEOM_UPDATE;
 	    		msgObj.geom		= _es(g);
-
-				console.log("ads host.js::_update_geom ");
 
     			_fire_pub_callback(POS_MSG, posID, NOTIFY_GEOM_UPDATE, g);
 
@@ -2383,42 +2373,35 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 				{
 					case "exp-push":
 						_expand_safeframe(msgObj,TRUE);
-						sf.lib.logger.log("ads host.js::_handle_msg_evt exp-push ");
 						ret = TRUE;
 					break;
 					case "exp-ovr":
 						_expand_safeframe(msgObj);
-						sf.lib.logger.log("ads host.js::_handle_msg_evt exp-ovr ");
 						ret = TRUE;
 					break;
 					case COLLAPSE_COMMAND:
 						_collapse_safeframe(msgObj);
-						sf.lib.logger.log("ads host.js::_handle_msg_evt COLLAPSE_COMMAND ");
 						ret = TRUE;
 					break;
 					case MESSAGE_COMMAND:
 						_notify_message(msgObj);
-						sf.lib.logger.log("ads host.js::_handle_msg_evt MESSAGE_COMMAND ");
 						ret = TRUE;
 					break;
 					case ERROR_COMMAND:
 						_record_error(msgObj);
-						sf.lib.logger.log("ads host.js::_handle_msg_evt ERROR_COMMAND ");
 						ret = TRUE;
 					break;
 					case BACKGROUND_COMMAND:
 						_set_background(msgObj);
-						sf.lib.logger.log("ads host.js::_handle_msg_evt BACKGROUND_COMMAND ");
 						ret = TRUE;
 					case NOTIFY_GEOM_UPDATE:
-						sf.lib.logger.log("ads host.js::_handle_msg_evt NOTIFY_GEOM_UPDATE "  + msgObj.pos);
 						ret = TRUE;
 					break;
 					case "read-cookie":
 						var canRead = info.conf && info.conf.supports && info.conf.supports[msgObj.cmd] && info.conf.supports[msgObj.cmd] != "0";
 						if(canRead){
 							_read_cookie(msgObj);
-							sf.lib.logger.log("ads host.js::_handle_msg_evt read-cookie "  + msgObj);
+							
 							ret = TRUE;
 						}
 						else{
@@ -2429,7 +2412,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 						var canWrite = info.conf && info.conf.supports && info.conf.supports[msgObj.cmd] && info.conf.supports[msgObj.cmd] != "0";
 						if(canWrite){
 							_write_cookie(msgObj);
-							sf.lib.logger.log("ads host.js::_handle_msg_evt write-cookie "  + msgObj);
+							
 							ret = TRUE;
 						}
 						else{
@@ -2494,7 +2477,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 			msgObj = id = params = NULL;
 
-			sf.lib.logger.log("ads host.js::_send_response "  + current_status);
+			
 		}, XCOM_RESP_DELAY);
     }
 
@@ -2630,7 +2613,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			info = NULL;
 			_log("build_geom info error: " + (e && e[MSG] || 'NULL'), TRUE);
 		}
-		sf.lib.logger.log("ads host.js::_build_geom "  + JSON.stringify(info));
+		
 		return info;
 	}
 
@@ -2648,7 +2631,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 	function _expand_safeframe(msgObj, push)
     {
-		sf.lib.logger.log("ads host.js::_expand_safeframe " );
+		
 		var xn = FALSE, yn = FALSE, posID = (msgObj && msgObj.pos), params, params_conf, ifr, par, ifrSt, parSt,
 			orWd, orHt, dx, dy, nWd, nHt, id,t,l,r,b,exp,
 			z, delta, scr_handle;
@@ -2767,7 +2750,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
     function _collapse_safeframe(msgObj, isOutside, noMsging)
     {
-		sf.lib.logger.log("ads host.js::_collapse_safeframe " );
+		
 		var posID		= (msgObj && msgObj.pos),
 			params		= (posID && rendered_ifrs[posID]),
 			params_conf	= (params && params.conf),
@@ -2819,8 +2802,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 	* @param {$sf.lib.lang.ParamHash} bgData The details about the message send from the SafeFrame to set background
 	*/
 	function _buildBgData(bgData){
-
-		sf.lib.logger.log("ads host.js::_buildBgData " );
 
 		var k, v, i;
 		var bg = {};
@@ -2881,7 +2862,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 		}
 		
 		//bg = bgData;
-		sf.lib.logger.log("ads host.js::_buildBgData " +JSON.stringify(bg));
+
 		return bg;
 	}
 	
@@ -3041,8 +3022,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			ifrSt		= (ifr && ifr[ST]),
 			parSt		= (par && par[ST]),
 			scr_handle;
-
-		sf.lib.logger.log("ads host.js::_notify_message ");
 			
 		_fire_pub_callback(POS_MSG, msgObj.pos, NOTIFY_MESSAGE, msgObj.msg);
 		
@@ -3299,7 +3278,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 	function render()
 	{
-		sf.lib.logger.log("ads host.js::RENDER ");
+
 		var idx 		= 0,
 			args		= arguments,
 			firstCSSPos = "relative",
@@ -3468,7 +3447,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 	function status()
 	{
-		sf.lib.logger.log("ads host.js::status = " + current_status);
 		return current_status;
 	}
 

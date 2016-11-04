@@ -1164,7 +1164,6 @@ if (window["$sf"]) {
 			} catch (e) {
 				ret.nodejs = 0;
 			}
-console.log("host base.js::parse_ua ret=" + JSON.stringify(ret));
 			return ret;
 	    }
 
@@ -2277,7 +2276,6 @@ console.log("host base.js::parse_ua ret=" + JSON.stringify(ret));
 
 		function replace_iframe(attrs, cssText, parRef, cb, xmsgCB)
 		{
-			console.log("host base.js::replace_iframe top");
 			var cl, el, frameEl, elID, tgn, parNode, e;
 
 			attrs		= attrs || {};
@@ -2326,7 +2324,6 @@ console.log("host base.js::parse_ua ret=" + JSON.stringify(ret));
 			} catch (e) { }
 
 			cl = el = attrs = frameEl = parNode = cb = NULL;
-			console.log("host base.js::replace_iframe bottom");
 			return elt(elID);
 		}
 
@@ -2350,7 +2347,6 @@ console.log("host base.js::parse_ua ret=" + JSON.stringify(ret));
 
 		function iframe_view(el)
 		{
-			console.log("host base.js::iframe_view top");
 			var win, elWin, elDoc, frame_list, frame, fe, idx = 0, e, err;
 			try {
 				win = el.contentWindow || NULL;
@@ -2382,7 +2378,6 @@ console.log("host base.js::parse_ua ret=" + JSON.stringify(ret));
 				win = NULL;
 			}
 
-			console.log("host base.js::iframe_view bottom");
 			return win;
 		}
 
