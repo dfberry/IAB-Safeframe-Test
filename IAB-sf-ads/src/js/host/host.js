@@ -2493,7 +2493,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 			msgObj = id = params = NULL;
 
-			sf.lib.logger.log("ads host.js::_send_response "  + current_status + " " + msgObj.toString());
+			sf.lib.logger.log("ads host.js::_send_response "  + current_status);
 		}, XCOM_RESP_DELAY);
     }
 
