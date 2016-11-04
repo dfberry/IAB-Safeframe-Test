@@ -5,9 +5,6 @@ window.onload = function() {
 
 	// A function to process messages received by the window.
 	function receiveMessage(e) {
-		// Check to make sure that this message came from the correct domain.
-		if (e.origin !== "http://s.codepen.io")
-			return;
 
 		// Update the div element to display the message.
 		messageEle.innerHTML = "Message Received: " + e.data;

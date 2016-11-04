@@ -11,7 +11,7 @@ window.onload = function() {
 		e.preventDefault();
 
 		// Send a message with the text 'Hello Treehouse!' to the receiver window.
-		receiver.postMessage('Hello Treehouse!', '*');
+		receiver.postMessage('Hello Treehouse!', 'http://ads.localhost:8020');
 	}
 
 	// Add an event listener that will execute the sendMessage() function
