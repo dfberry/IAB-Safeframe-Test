@@ -338,7 +338,7 @@
 		
 		function initSafeFrameConfig() {
 			var conf	= new $sf.host.Config({
-				renderFile:		"../src/html/r.html",
+				renderFile:		"http://ads.localhost:8020/src/html/r.html",
 				positions:
 				{
 					"LREC":

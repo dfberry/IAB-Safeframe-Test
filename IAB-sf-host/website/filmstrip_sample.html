@@ -56,7 +56,7 @@ One application involves aligning the five segments of the Filmstrip to the five
 		 // relative source is relative to the r.html bootstrap file  "../../examples/IAB_RisingStars/AdFiles/pushdownAdBootstrap.js",	
 		 // ALWAYS USE ABSOLUTE SOURCES
 		// "src": "http://safeframes.emination.com/risingStars/adfiles/pushdownAdBootstrap.js", 
-		"src": getAdServerAddress() + "/ads/filmstripAdBootstrap.js",
+		"src": "http://ads.localhost:8020/ads/filmstripAdBootstrap.js",
 		
 		"conf":
 		{
@@ -79,10 +79,9 @@ INCLUDES OF THE SAFEFRAMES FRAMEWORK
 These script files should be hosted on your CDN from a different 
 top level domain from the host site.
 -->
-
-	<script type="text/javascript" src="../../src/js/lib/base.js"></script>
-    <script type="text/javascript" src="../../src/js/host/host.js"></script>
-    <script type="text/javascript" src="../../src/js/lib/boot.js"></script>
+	<script type="text/javascript" src="http://ads.localhost:8020/src/js/lib/base.js"></script>
+    <script type="text/javascript" src="http://ads.localhost:8020/src/js/host/host.js"></script>
+    <script type="text/javascript" src="http://ads.localhost:8020/src/js/lib/boot.js"></script>
 
 		<script type="text/javascript">
 		function posMessageCallback(id, msgName, data){
@@ -104,7 +103,7 @@ top level domain from the host site.
 				var conf	= new $sf.host.Config({
 					// Should be absolute path to render file hosted on CDN "../../src/html/r.html",
 					//renderFile:	"http://s3-us-west-2.amazonaws.com/safeframe/refimpl/1-0-3/html/r.html",
-					renderFile:	"../../src/html/r.html",
+					renderFile:	"http://ads.localhost:8020/src/html/r.html",
 					onPosMsg: posMessageCallback,
 					positions: {}
 				});
