@@ -1150,7 +1150,7 @@ var NULL					= null,
 				var paramsForPostMessage = params.toString();
 				var cNameForPostMessage = ((host_cname == "file" || host_cname == "") ? "*" : host_cname);
 				
-				console.log("ads ext.js postMessage params=" + params.toString() + " host_cname=" + cNameForPostMessage);
+				console.log("ads ext.js POSTMESSAGE params=" + params.toString() + " host_cname=" + cNameForPostMessage);
 
 				top.postMessage(paramsForPostMessage, cNameForPostMessage);
 				sent = TRUE;
