@@ -8,10 +8,12 @@
 </head>
 <body>
 	<h1>Controller Window</h1>
-	http://blog.teamtreehouse.com/cross-domain-messaging-with-postmessage
+	This sample is based on blog post from <a href="http://blog.teamtreehouse.com/cross-domain-messaging-with-postmessage">teamtreehouse</a>
 	<p>
 		<button id="send">Send Message</button>
 	</p>
+	<input id="message" type=text value='Hello Treehouse!' width="50">
+	<input id="externalDomain" type=text value='http://ads.localhost:8020' width="50">
 
 	<div style="background-color:green">
 	<iframe id="receiver" src="http://ads.localhost:8020/src/html/postMessageReceiver.html" width="400" height="200">
