@@ -1777,7 +1777,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			success = FALSE,
 			msgObj, w, el, e;
 
-			console.log("ads host.js::send_msg_to_child_iframe - tgtID " + tgtId + " " + data)
+			console.log("ads host.js::send_msg_to_child_iframe - tgtID " + tgtID + " " + data)
 
 		if (!pipe) {
 			success = _call_xmsg_host_fb("send",tgtID, data);
