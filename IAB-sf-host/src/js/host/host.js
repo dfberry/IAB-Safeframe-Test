@@ -1782,6 +1782,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 					el 		= _elt(tgtID);
 					w		= _ifr_view(el);
 					try {
+						var hostName = pipe.srcHost || "*"; // how is * secure?
+						var postMsg = _cstr(msgObj);
+						console.log("HOST host_cname=" + hostName + " POSTMESSAGE =" + postMsg);
 						w[PMSG](_cstr(msgObj),pipe.srcHost || "*");
 						success = TRUE;
 					} catch (e) {

@@ -1135,7 +1135,7 @@ var NULL					= null,
 				var paramsForPostMessage = params.toString();
 				var cNameForPostMessage = ((host_cname == "file" || host_cname == "") ? "*" : host_cname);
 				
-				console.log("ads ext.js POSTMESSAGE params=" + params.toString() + " host_cname=" + cNameForPostMessage);
+				console.log("ADS host_cname=" + cNameForPostMessage + " POSTMESSAGE =" + params.toString());
 
 				top.postMessage(paramsForPostMessage, cNameForPostMessage);
 				sent = TRUE;
@@ -1489,7 +1489,7 @@ var NULL					= null,
 
 	function geom()
 	{
-		console.log("ads ext.js::GEOM");
+		console.log("ads ext.js::GEOM " + JSON.stringify(geom_info));
 		return geom_info;
 	}
 
